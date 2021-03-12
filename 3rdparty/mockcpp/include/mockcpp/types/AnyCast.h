@@ -18,7 +18,9 @@
 #ifndef __MOCKPP_ANY_CAST_H
 #define __MOCKPP_ANY_CAST_H
 
+#if __cplusplus < 201103L
 #include <boost/type_traits/is_enum.hpp>
+#endif
 
 #include <mockcpp/mockcpp.h>
 
@@ -102,7 +104,11 @@ struct AnyCast<ValueType, true>
 template <typename ValueType>
 ValueType* any_cast(AnyBase* operand)
 {
+   #if __cplusplus < 201103L
    return AnyCast<ValueType, boost::is_enum<ValueType>::value>::cast(operand);
+   #else
+   return AnyCast<ValueType, std::is_enum<ValueType>::value>::cast(operand);
+   #endif
 }
 
 /////////////////////////////////////////////////////////////////

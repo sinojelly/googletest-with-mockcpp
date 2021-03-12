@@ -21,7 +21,7 @@
 #include <mockcpp/mockcpp.h>
 #include <mockcpp/MockObject.h>
 
-#include <boost/typeof/typeof.hpp>
+//#include <boost/typeof/typeof.hpp>
 
 MOCKCPP_NS_START
 

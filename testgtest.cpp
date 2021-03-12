@@ -14,7 +14,7 @@ TEST(sample_test_case, sample_test)
 
 TEST(test_mock, sample_mock_test ) {
     MOCKER(add).stubs().will(returnValue(100));
-    int c = add(a, b);
+    int c = add(1, 2);
     EXPECT_EQ(100, c);
     GlobalMockObject::verify();
 }

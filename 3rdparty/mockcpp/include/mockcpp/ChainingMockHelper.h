@@ -18,7 +18,6 @@
 #ifndef __MOCKCPP_CHAINING_MOCK_HELPER_H
 #define __MOCKCPP_CHAINING_MOCK_HELPER_H
 
-#include <boost/typeof/typeof.hpp>
 #include <mockcpp/mockcpp.h>
 #include <mockcpp/IsEqual.h>
 #include <mockcpp/IsNotEqual.h>
@@ -35,6 +34,14 @@
 #include <mockcpp/TypelessStubAdapter.h>
 #include <mockcpp/types/Any.h>
 #include <mockcpp/ProcStub.h>
+
+#if __cplusplus < 201103L
+#include <boost/typeof/typeof.hpp>
+#else
+#include <type_traits>
+//#define BOOST_TYPEOF(...) std::remove_reference<decltype((__VA_ARGS__))>::type
+#define BOOST_TYPEOF typeof
+#endif
 
 MOCKCPP_NS_START
 
