@@ -11,10 +11,16 @@ enable_testing()
 include_directories(${gtest_SOURCE_DIR}/include ${gtest_SOURCE_DIR})
 
 ################################
+# Mockcpp
+################################
+INCLUDE_DIRECTORIES(BEFORE ${PROJECT_SOURCE_DIR}/3rdparty/mockcpp/include)
+link_directories(${PROJECT_SOURCE_DIR}/3rdparty/mockcpp/lib)
+
+################################
 # Unit Tests
 ################################
 # Add test cpp file
 add_executable( runUnitTests testgtest.cpp )
 # Link test executable against gtest & gtest_main
-target_link_libraries(runUnitTests gtest gtest_main)
+target_link_libraries(runUnitTests gtest gtest_main mockcpp)
 add_test( runUnitTests runUnitTests )
